@@ -1,9 +1,8 @@
 package com.swingy.view.gameplay;
+
 import com.swingy.controller.Game;
 import com.swingy.model.game.GamePlayer;
 import com.swingy.model.players.Hero;
-import com.swingy.model.players.Possession;
-import com.swingy.save.SavePlayers;
 
 import java.io.*;
 import java.util.Scanner;
@@ -11,16 +10,11 @@ import java.util.Scanner;
 public class GameConsole implements GamePlay {
     private Game gameController;
     private Scanner in;
-    SavePlayers file;
+
     @Override
     public void start() {
         gameController = new Game(this);
         gameController.onStart();
-    }
-
-    @Override
-    public void printMap(boolean[][] map, Possession heroPossession) {
-
     }
 
     @Override
@@ -47,7 +41,7 @@ public class GameConsole implements GamePlay {
                 System.out.println("Nothing will be saved on this current level, bye...");
                 break;
             } else {
-                System.out.println("Unknown command");
+                System.out.println("Commands to type: NORTH, SOUTH, WEST OR EAST");
             }
         }
     }
@@ -69,8 +63,8 @@ public class GameConsole implements GamePlay {
 
         System.out.println();
         System.out.println("You moved to position occupied by villain");
-        System.out.println("FIGHT - to fight with villain");
-        System.out.println("RUN - to run, 50% chance to move to the previous position");
+        System.out.println("FIGHT => to fight with villain");
+        System.out.println("RUN => to run, 50% chance to move to the previous position");
         System.out.println("Commands (FIGHT, RUN):");
 
         while (in.hasNext()) {
@@ -93,9 +87,9 @@ public class GameConsole implements GamePlay {
 
         System.out.println();
         System.out.println("Would you like to replace " + replaceMessage + "?");
-        System.out.println("LEAVE - to leave your artifact");
-        System.out.println("REPLACE - to replace by new artifact");
-        System.out.println("Commands (LEAVE, REPLACE):");
+        System.out.println("LEAVE => to leave your artifact");
+        System.out.println("REPLACE => to replace by new artifact");
+        System.out.println("Commands (LEAVE, REPLACE)");
 
         while (in.hasNext()) {
             String option = in.nextLine();
@@ -109,29 +103,6 @@ public class GameConsole implements GamePlay {
             }
         }
         return false;
-    }
-
-    @Override
-    public void gameContinue(Hero hero) {
-        int level = hero.getLevel();
-        in = new Scanner(System.in);
-
-        System.out.println("Do you want to go the next level? Please type (Yes or No)");
-        while (in.hasNext()){
-            String option = in.nextLine();
-
-            if (option.equalsIgnoreCase("yes")){
-                hero.setLevel(level + 1);
-                new GameConsole().start();
-                break;
-            }
-            else if (option.equalsIgnoreCase("no")){
-                System.out.println("See you again next time");
-                break;
-            }
-            else
-                System.out.println("Please type \"Yes or No\"");
-        }
     }
 
     public void savePlayers(Hero hero){

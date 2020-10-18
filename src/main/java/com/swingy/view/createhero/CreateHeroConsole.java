@@ -20,8 +20,7 @@ public class CreateHeroConsole implements CreateHeroView {
         String heroClass = "";
         Scanner in = new Scanner(System.in);
 
-        System.out.println("To create hero enter his name and class.");
-        System.out.println("Enter name:");
+        System.out.println("Please enter your name...");
         name = in.nextLine();
 
         System.out.println("Classes: \t attack \t defense \t hitpoints\n" +
@@ -31,18 +30,20 @@ public class CreateHeroConsole implements CreateHeroView {
                 "Slingshot:  \t 40 \t         30 \t         120\n" +
                 "Apex:     \t 45 \t         10 \t         80\n" +
                 "Titan:   \t 25 \t         20 \t         110\n" +
-                "Enter class name: ");
+                "Please enter your favourite hero name : ");
         heroClass = in.nextLine();
 
-        System.out.println("(1) - CREATE - to create hero with previously entered Name and Class");
+        System.out.println("Please type in \"continue\" to processed game or type in \"leave\" to abort game");
         while (in.hasNext()){
             String option = in.nextLine();
-            if (option.equalsIgnoreCase("1")){
+            if (option.equalsIgnoreCase("continue")){
                 createController.createOption(name, heroClass);
                 break;
-            } else {
-                System.out.println("Please enter \"1\" to continue");
+            } else if (option.equalsIgnoreCase("leave")) {
+                System.out.println("See you later, bye...");
             }
+            else
+                System.out.println("Unknown command. Please enter \"continue\" or \"leave\"...");
         }
     }
 

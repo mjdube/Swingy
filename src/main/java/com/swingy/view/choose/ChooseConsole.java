@@ -16,17 +16,18 @@ public class ChooseConsole implements ChooseView {
         in = new Scanner(System.in);
 
         System.out.println();
-        System.out.println("(1) - CREATE - to create hero");
-        System.out.println("(2) - CHOOSE - to select previous hero");
-        System.out.println("Commands ( (1) - CREATE, (2) - CHOOSE)");
+        System.out.println("CREATE => Create a new hero...");
+        System.out.println("CHOOSE => Choose and select an existing hero...");
+        System.out.println("EXIT => Exit the game...");
+        System.out.println("Commands to type: create, choose or exit");
 
         while (in.hasNext()) {
             String option = in.nextLine();
 
-            if (option.equalsIgnoreCase("1")) {
+            if (option.equalsIgnoreCase("create")) {
                 new CreateHeroConsole().start();
                 break;
-            } else if (option.equalsIgnoreCase("2")) {
+            } else if (option.equalsIgnoreCase("choose")) {
                 if (prevHeroes().size() > 0) {
                     System.out.println("Please choose previous to use...");
                     int i = 0;
@@ -40,9 +41,10 @@ public class ChooseConsole implements ChooseView {
                     new CreateHeroConsole().start();
                     break;
                 }
-            } else {
-                System.out.println("Unknown command");
-            }
+            } else if (option.equalsIgnoreCase("exit")) {
+                System.out.println("Bye...");
+            } else
+                System.out.println("Unknown command, please try again...");
         }
     }
 
@@ -56,9 +58,9 @@ public class ChooseConsole implements ChooseView {
             while ((text = br.readLine()) != null)
                 prevHeroes.add(text);
         } catch (FileNotFoundException e) {
-            System.out.println("No file Heroes found");
+            System.out.println("No hero saved, please create hero...");
         } catch (IOException e) {
-            System.out.println("No file to read");
+            System.out.println("No file to read...");
         }
         return prevHeroes;
     }

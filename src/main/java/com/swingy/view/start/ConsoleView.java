@@ -13,22 +13,28 @@ public class ConsoleView implements BeginView {
     public void begin() {
         start = new Start(this);
 
-        System.out.println("(1) - CREATE - to create hero");
-        System.out.println("(2) - CHOOSE - to select already created hero");
+        System.out.println("CREATE => Create a new hero...");
+        System.out.println("CHOOSE => Choose and select an existing hero...");
+        System.out.println("EXIT => Exit the game");
+        System.out.println("Commands to type: create, choose or exit");
         Scanner in = new Scanner(System.in);
 
         while (in.hasNext()){
             String option = in.nextLine();
-            if (option.equalsIgnoreCase("1")){
+            if (option.equalsIgnoreCase("create")){
                 start.createHeroOpt();
                 break;
             }
-            else if (option.equalsIgnoreCase("2")){
+            else if (option.equalsIgnoreCase("choose")){
                 start.selectHeroOpt();
                 break;
             }
+            else if (option.equalsIgnoreCase("exit")){
+                System.out.println("Bye...");
+                break;
+            }
             else {
-                System.out.println("Please enter commands (1) - Create or (2) - Choose");
+                System.out.println("Commands to type: create, choose or exit");
             }
         }
     }
