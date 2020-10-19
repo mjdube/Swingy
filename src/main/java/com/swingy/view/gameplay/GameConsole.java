@@ -48,7 +48,7 @@ public class GameConsole implements GamePlay {
 
     @Override
     public void gameFinished(Hero hero) {
-        System.out.println("Player");
+        System.out.println("See you next time Player");
         savePlayers(hero);
     }
 

@@ -16,10 +16,10 @@ public class ChooseConsole implements ChooseView {
         in = new Scanner(System.in);
 
         System.out.println();
-        System.out.println("CREATE => Create a new hero...");
-        System.out.println("CHOOSE => Choose and select an existing hero...");
+        System.out.println("CONTINUE => Choose and select an existing hero...");
+        System.out.println("CREATE => Create a new player...");
         System.out.println("EXIT => Exit the game...");
-        System.out.println("Commands to type: create, choose or exit");
+        System.out.println("Commands to type: continue, create or exit");
 
         while (in.hasNext()) {
             String option = in.nextLine();
@@ -27,9 +27,9 @@ public class ChooseConsole implements ChooseView {
             if (option.equalsIgnoreCase("create")) {
                 new CreateHeroConsole().start();
                 break;
-            } else if (option.equalsIgnoreCase("choose")) {
+            } else if (option.equalsIgnoreCase("continue")) {
                 if (prevHeroes().size() > 0) {
-                    System.out.println("Please choose previous to use...");
+                    System.out.println("Please choose previous hero number...");
                     int i = 0;
                     for (String hero : prevHeroes()) {
                         System.out.println("["+ i++ +"]" + " " + hero);
@@ -42,7 +42,7 @@ public class ChooseConsole implements ChooseView {
                     break;
                 }
             } else if (option.equalsIgnoreCase("exit")) {
-                System.out.println("Bye...");
+                System.out.println("Bye, nothing will be saved...");
             } else
                 System.out.println("Unknown command, please try again...");
         }

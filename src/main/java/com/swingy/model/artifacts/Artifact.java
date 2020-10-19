@@ -14,9 +14,15 @@ public abstract class Artifact {
     }
 
     public String getName() {
-        if (this.name == "")
-            return "nothing";
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     public String artifactInfo(){

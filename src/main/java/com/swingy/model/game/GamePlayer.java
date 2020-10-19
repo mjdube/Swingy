@@ -73,7 +73,7 @@ public class GamePlayer {
 
     private Artifact generateArtifact() {
         random = new Random();
-        int rand = random.nextInt(10) + 1;
+        int rand = random.nextInt(3);
 
         Artifact artifact = null;
         if (rand == 0)

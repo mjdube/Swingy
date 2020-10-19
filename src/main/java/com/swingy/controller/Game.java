@@ -106,17 +106,17 @@ public class Game {
             if (artifact instanceof Weapon) {
                 if (gamePlayer.getHero().getWeapon() == null || gamePlayView.replaceArtifact("your weapon: " + gamePlayer.getHero().getWeapon() + ", found: " + artifact)) {
                     gamePlayer.getHero().heroWeapon((Weapon) artifact);
-                    gamePlayView.showMessage("You equipped new weapon: " + artifact);
+                    gamePlayView.showMessage("You equipped new weapon");
                 }
             } else if (artifact instanceof Helm) {
                 if (gamePlayer.getHero().getHelm() == null || gamePlayView.replaceArtifact("your helmet: " + gamePlayer.getHero().getHelm() + ", found: " + artifact)) {
                     gamePlayer.getHero().heroHelm((Helm) artifact);
-                    gamePlayView.showMessage("You equipped new helm: " + artifact);
+                    gamePlayView.showMessage("You equipped new helm");
                 }
             } else if (artifact instanceof Armor) {
                 if (gamePlayer.getHero().getArmor() == null || gamePlayView.replaceArtifact("your armor: " + gamePlayer.getHero().getArmor() + ", found: " + artifact)) {
                     gamePlayer.getHero().heroArmor((Armor) artifact);
-                    gamePlayView.showMessage("You equipped new armor: " + artifact);
+                    gamePlayView.showMessage("You equipped new armor");
                 }
             }
         }
