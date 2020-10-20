@@ -5,6 +5,7 @@ import com.swingy.model.artifacts.Helm;
 import com.swingy.model.artifacts.Weapon;
 
 public class PlayerBuilder {
+
     private String name;
     private int attack;
     private int defense;

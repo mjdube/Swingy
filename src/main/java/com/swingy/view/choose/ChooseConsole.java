@@ -8,7 +8,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ChooseConsole implements ChooseView {
+public class
+ChooseConsole implements ChooseView {
     private Choose chooseController;
     Scanner in;
 

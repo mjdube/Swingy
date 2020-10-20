@@ -58,6 +58,7 @@ public class Choose {
             helm = new Helm(heroDetail[9][0], Integer.parseInt(heroDetail[9][1]));
             hero.heroHelm(helm);
         }
+        hero.validate();
         gamePlayer.initGame(hero);
         chooseView.openGame();
     }

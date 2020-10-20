@@ -2,15 +2,19 @@ package com.swingy.model.players;
 import com.swingy.model.artifacts.Armor;
 import com.swingy.model.artifacts.Helm;
 import com.swingy.model.artifacts.Weapon;
+import com.swingy.view.createhero.CreateHeroConsole;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 public class Hero extends Players{
 
 
-    private Armor armor;
-    private Helm helm;
-    private Weapon weapon;
 
     @Min(value = 0, message = "Level should not be less than 0")
     private int level;
@@ -21,6 +25,10 @@ public class Hero extends Players{
     @NotNull(message = "Hero class cannot be null")
     private String heroClass;
 
+    private Armor armor;
+    private Helm helm;
+    private Weapon weapon;
+
     public Hero(String name, int attack, int defense, int hitpoints, Armor armor, Helm helm, Weapon weapon, int level, int experience, String heroClass) {
         super(name, attack, defense, hitpoints);
         this.armor = armor;
@@ -29,6 +37,18 @@ public class Hero extends Players{
         this.level = level;
         this.experience = experience;
         this.heroClass = heroClass;
+    }
+
+    public void validate(){
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+        Set<ConstraintViolation<Hero>> constraintViolations = validator.validate(this);
+        if (constraintViolations.size() != 0){
+            for (ConstraintViolation<Hero> violations : constraintViolations){
+                System.out.println(violations.getMessage());
+            }
+            new CreateHeroConsole().start();
+        }
     }
 
     public void heroWeapon(Weapon weapon){
